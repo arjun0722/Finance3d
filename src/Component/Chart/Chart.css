@@ -1,0 +1,274 @@
+.main-chart{
+  padding: 0px 0px 0px 0px;
+}
+.graph-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 750px;
+  padding: 53px 32px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-family: sans-serif;
+}
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 43px;
+  /* margin-top: 0rem; */
+  margin-bottom: -9rem;
+}
+
+.y-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  margin: -97px -18px;
+  font-size: 14px;
+  font-weight: bold;
+}
+.y-label {
+  position: absolute;
+  top: 50%;
+  transform: rotate(-90deg) translateY(-50%);
+  white-space: nowrap;
+  margin-right: -79px;
+  font-size: 20px;
+  font-weight: bold;
+  left: -112px;
+  margin-top: 2%;
+  font-family: "Poppins", sans-serif;
+}
+
+.y-axis .label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 18%;
+  padding: 0 10px;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.y-axis .label:first-child,
+.x-axis .label:last-child {
+  border: none;
+}
+
+.chart {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin-top: -10rem;
+}
+
+.x-axis {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 10%;
+  margin-top: 48rem;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.x-axis .label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 33.33%;
+  padding: 0 40px;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.grid-container {
+  position: absolute;
+  width: 100%;
+  height: 94%;
+  top: 25%;
+  display: flex;
+  flex-wrap: wrap;
+  font-family: "Poppins", sans-serif;
+}
+
+.outer-container {
+  height: 45rem;
+  border: 1px solid #bcb7b7;
+  border-radius: 1rem;
+  width: 90%;
+  margin: auto;
+  margin-top: 11rem;
+  display: flex;
+  justify-content: center;
+}
+
+.grid {
+  width: 33.33%;
+  height: 33.33%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.grid1 {
+  border-left: 3px solid black;
+  border-bottom: 1px dashed #aaa;
+  border-right: 1px dashed #aaa;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px dashed #aaa;
+  border-right: 1px dashed #aaa;
+}
+
+.grid3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px dashed #aaa;
+}
+
+.grid4 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-left: 3px solid black;
+  border-bottom: 1px dashed #aaa;
+  border-right: 1px dashed #aaa;
+}
+
+.grid5 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px dashed #aaa;
+  border-right: 1px dashed #aaa;
+}
+
+.grid6 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px dashed #aaa;
+}
+
+.grid7 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 3px solid black;
+  border-left: 3px solid black;
+  border-right: 1px dashed #aaa;
+}
+
+.grid8 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 3px solid black;
+  border-right: 1px dashed #aaa;
+}
+
+.grid9 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 3px solid black;
+}
+
+/* .grid1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+} */
+
+.circle-container {
+  /* margin-bottom: 10px; */
+  height: 201px;
+}
+
+.text-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.circle-text-container {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-direction: row;
+}
+
+.circle-text {
+  font-weight: bold;
+  font-size: 15px;
+  order: 1; /* move the text to the left */
+  margin: 0px 25px;
+}
+
+.circle-date {
+  font-size: 12px;
+  order: 2; /* move the date to the right */
+  margin: 0px 25px;
+}
+.circle-Box {
+  width: 100%;
+}
+
+.circle-Category {
+  font-size: 17px;
+  font-weight: bold;
+}
+@media (max-width: 600px) {
+  .main-chart{
+    padding: 0px 15px 0px 15px;
+  }
+  .outer-container {
+    width: auto;
+    overflow-x: scroll;
+  }
+  .graph-container {
+    width: auto;
+    overflow-x: scroll;
+    padding: 0px 0px 0px 0px;
+   
+  }
+  .grid-container{
+    width: 200%;
+  }
+  .chart {
+    width: auto;
+  }
+  .x-axis{
+    margin-top: 56rem !important;
+  }
+  .y-axis {
+    padding: 0px 15px 0px 15px;
+  }
+}

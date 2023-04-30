@@ -1,0 +1,395 @@
+
+.modal-text {
+  font-size: 22px;
+  font-weight: 500;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.modalbtn {
+  background-color: #eb7718;
+  border: none;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  font-weight: 100;
+}
+
+.modalbtn:hover {
+  background-color: #eb7718;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  color: white;
+}
+
+.modalbtn:focus {
+  outline: none;
+}
+
+.modalbtn:active {
+  background-color: #eb7718;
+  color: white;
+}
+
+.modal-footer {
+  background-color: #283240;
+  margin: -5px 0px;
+  justify-content: space-between;
+}
+.modal-body {
+  padding: 0rem;
+}
+
+.hover-effect:hover {
+  color: rgb(70, 239, 245);
+  cursor: pointer;
+}
+.btn3:hover {
+  color: rgb(70, 239, 245) !important;
+  cursor: pointer;
+  font-size: 15px;
+  font-family: 'Poppins', sans-serif;
+}
+.assestmodal {
+  max-width: 706px;
+  height: 510px;
+}
+.assestheader {
+  background-color: #283240;
+  margin-bottom: -2px;
+}
+.modalclose1 {
+  background-color: white;
+}
+.modalclose1text {
+  font-weight: bold;
+  font-size: 24px;
+}
+.assestmodalbody {
+  width: 100%;
+  height: 70%;
+}
+.modalbody1 {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  margin: 0rem auto;
+}
+.form1 {
+  background-color: #283240;
+  color: white;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.row1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 65px;
+  margin: 7px 12px 8px 12px;
+}
+.assestname {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.assestnamelabel {
+  margin-bottom: 8px;
+  font-size: 15px;
+  font-family: 'Poppins', sans-serif;
+}
+.assestname_input {
+  width: 280px;
+  height: 42px;
+  border-radius: 7px;
+}
+.assestclass {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.assestclass_label {
+  margin-bottom: 8px;
+  font-size: 15px;
+  font-family: 'Poppins', sans-serif;
+}
+.select_aseestclass {
+  width: 280px;
+  height: 42px;
+  border-radius: 7px;
+}
+.row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  margin: 7px 12px 8px 12px;
+  row-gap: 16px;
+  column-gap: 65px;
+}
+
+.taxtreatment_label {
+  margin-bottom: 8px;
+  font-size: 15px;
+  font-family: 'Poppins', sans-serif;
+}
+.select_taxtreatment {
+  width: 280px;
+  height: 42px;
+  border-radius: 7px;
+}
+
+.row3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.duration_label {
+  margin-bottom: 8px;
+  font-size: 15px;
+  font-family: 'Poppins', sans-serif;
+}
+.select_duration {
+  width: 280px;
+  height: 42px;
+  border-radius: 7px;
+}
+.row4 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  margin: 7px 12px 8px 12px;
+  row-gap: 16px;
+  column-gap: 65px;
+  align-items: flex-start;
+}
+.row5 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    margin: 7px 12px 8px 12px;
+    row-gap: 16px;
+    column-gap: 65px;
+    align-items: flex-start;
+  }
+.amountinvested {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.amountinvested_label {
+  margin-bottom: 8px;
+  font-size: 15px;
+  font-family: 'Poppins', sans-serif;
+}
+.amountinvest_input {
+  width: 280px;
+  height: 42px;
+  border-radius: 7px;
+}
+.fixedincome {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto 18px;
+  margin-top: 42px;
+}
+
+.label_fixedincome {
+  margin-right: 8px;
+  font-size: 15px;
+  font-family: 'Poppins', sans-serif;
+}
+.checkbox {
+  margin-left: 8px;
+  height: 15px;
+  width: 15px;
+}
+.modal_footer_btn {
+  margin: 9px 27px;
+  background-color: rgb(122, 122, 122);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 7px 16px;
+  font-weight: bold;
+  font-size: 15px;
+  font-family: 'Poppins', sans-serif;
+}
+.modal_footer_btn:hover{
+  color: white;
+}
+
+
+.clearall_btn {
+  margin: 9px 27px;
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+}
+
+.submit_btn {
+  margin: 9px 27px;
+  background-color: #e97451;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 15px;
+  font-family: 'Poppins', sans-serif;
+}
+.submit_btn:hover{
+  color:white;
+}
+
+.assest_added {
+  flex: unset;
+  background-color: #283240;
+  width: 75%;
+  color: white;
+  border-radius: 9px;
+  margin-top: 8px;
+  /* margin-bottom: 100px; */
+  padding: 15px 0px 15px 0px;
+height: auto;
+font-family: 'Poppins', sans-serif;
+}
+
+.added_assest_name {
+  display: flex;
+  justify-content: space-between;
+  margin: 0px 25px;
+  padding: 5px opx;
+}
+.btn3 {
+  background-color: #283240;
+  color: white;
+  border: none;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  font-size: 17px;
+  text-decoration: underline;
+  font-family: 'Poppins', sans-serif;
+}
+
+.fixed_input{
+    width: 280px;
+    height: 42px;
+    border-radius: 7px;
+    float: left !important;
+}
+.FixedIncome{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.FixedIncome_label{
+    margin-bottom: 8px;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.row1,.row2,.row4,.row5{
+
+}
+.modal-text2{
+  
+}
+.modal-text3{
+
+}
+.modal-main{
+
+}
+.update-btn{
+
+}
+@media (max-width: 600px) {
+  .modal{
+    top: 2%;
+  }
+  .modal-content{
+    padding: 25px 0px 25px 0px;
+  }
+  .form1{
+    padding: 25px 0px 0px 0px;
+  }
+    .row1,.row2,.row4,.row5{
+gap: 0px;
+display: flex;
+flex-direction: column;
+    }
+    .modal-footer{
+      display: unset;
+      padding: 0px !important;
+    }
+    .assest_added{
+      display: flex;
+      flex-direction: column;
+    }
+    .modal-text2{
+      width: 100% !important;
+      margin: 0px 0px !important;
+display: flex;
+flex-direction: column;
+padding: 0px 15px 0px 15px !important;
+    }
+    .modal-text3{
+      gap: 0px !important;
+      display: flex;
+      flex-direction: column;
+    }
+    .modal-main{
+      display: flex;
+      flex-direction: column;
+    }
+    .assest_added{
+      width: 100%;
+      min-height: auto !important;
+      height: auto !important;
+      padding: 10px 0px 10px 0px !important;
+    }
+    .update-btn{
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: 0px !important;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+}
+
+/* 
+----------------------for medium screen-------------------  */
+
+@media (max-width:768px) {
+  .modal-text2{
+ 
+    display: flex;
+justify-content: space-around;  
+width: 100% !important;
+    margin: 0px 0px !important;}
+    .modal-text3{
+      gap: 0px !important;
+    }
+    .update-btn{
+      padding-top: 13%;
+    }
+}

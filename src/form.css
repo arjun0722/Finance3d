@@ -1,0 +1,12 @@
+.row1,.row2,.row4,.row5{
+
+}
+form
+{
+    background: #000 !important;
+}
+@media (max-width: 600px) {
+    .row1,.row2,.row4,.row5{
+gap: 0px;
+    }
+}
