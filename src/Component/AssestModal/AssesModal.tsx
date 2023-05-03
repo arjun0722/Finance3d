@@ -1,13 +1,5 @@
 import React, { useState, useEffect } from "react";
-
-import "./AssestModal.css";
-import {
-  checkAssest,
-  resetInputs,
-  previewAssest,
-  dataBridge,
-  updateAssestState,
-} from "../../helper/helper";
+import { checkAssest, resetInputs, previewAssest } from "../../helper/helper";
 import {
   addAssest,
   emptyAsssestState,
@@ -16,28 +8,39 @@ import {
 } from "../../Redux/Reducer";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 
+import "./AssestModal.css";
+
 function AssesModal() {
   const dispatch = useDispatch();
 
-  const intialAssestValue = {
+  
+
+  const intialAssestValue: {
+    assestname: string;
+    assestclass: string;
+    taxtreatment: string;
+    duration: string;
+    amountinvested: string;
+    fixedincomecheckbox: boolean;
+    fixedincome: number;
+  } = {
     assestname: "",
     assestclass: "",
     taxtreatment: "",
     duration: "",
     amountinvested: "",
     fixedincomecheckbox: false,
-    fixedincome: "",
+    fixedincome: 0,
   };
-
-  const [assestState, setAssestState] = useState(intialAssestValue);
+  const [show, setShow] = useState<boolean>(true);
+  const [assestState, setAssestState] = useState<any>(intialAssestValue);
   const [updateAssest, setUpdateAssest] = useState();
-  const [isPreview, setIsPreview] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [isFixed, setIsFixed] = useState(false);
-  const [dispatchAssest, setDispatchAssest] = useState([]);
-  const totalAssest = useSelector((store) => store.assest);
+  const [isPreview, setIsPreview] = useState<boolean>(false);
+  const [isError, setIsError] = useState<boolean>(false);
 
-  const getAssests = (e) => {
+  const totalAssest = useSelector((store : any) => store.assest);
+
+  const getAssests = (e : any) => {
     const { value, name, checked } = e.target;
     setAssestState({
       ...assestState,
@@ -52,7 +55,7 @@ function AssesModal() {
       const res = await checkAssest(assestState);
       if (res) {
         assestState.id = Date.now();
-        setDispatchAssest((prevState) => [...prevState, assestState]);
+        dispatch(addAssest(assestState));
         setIsError(false);
       } else {
         setIsError(true);
@@ -62,33 +65,18 @@ function AssesModal() {
     setIsPreview(false);
   };
 
-  const handleDispatchAssest = () => {
-    dispatchAssest.map((assest) => {
-      dispatch(addAssest(assest));
-    });
-    setDispatchAssest([]);
-    setIsError(false);
-  };
   useEffect(() => {
-    // Add a click event listener to the modal
-    const modal = document.getElementById("exampleModalToggle");
-    modal.addEventListener("click", handleClick);
-
-    // Clean up function to remove the event listener when the component unmounts
-    return () => {
-      modal.removeEventListener("click", handleClick);
-    };
+    setShow(true);
   }, []);
 
-  // Click event handler function
-  const handleClick = (event) => {
-    console.log("Modal clicked!");
-  };
-
+  function handleCancel() {
+    setIsPreview(false);
+    setShow(false);
+  }
   return (
     <div className="modal-main">
       <div
-        className="modal fade"
+        className={`modal ${show ? "d-block" : "fade"}`}
         id="exampleModalToggle"
         aria-hidden="true"
         aria-labelledby="exampleModalToggleLabel"
@@ -102,12 +90,10 @@ function AssesModal() {
                 className="btn-close modalclose1"
                 data-bs-dismiss="modal"
                 aria-label="Close"
-                onClick={() => setIsPreview(false)}
-              >
-                <span className="bi bi-x modalclose1text"></span>
-              </button>
+                onClick={() => handleCancel()}
+              ></button>
             </div>
-            {isError ? <h5>"Fields are not filled properly"</h5> : null}
+
             <div className="modal-body assestmodalbody">
               <div className="modalbody1">
                 <div style={{ width: "100%" }}>
@@ -196,7 +182,7 @@ function AssesModal() {
                           <span style={{ color: "red" }}>*</span>
                         </label>
                         <input
-                          type="text"
+                          type="number"
                           className="amountinvest_input"
                           value={assestState.amountinvested}
                           name="amountinvested"
@@ -225,7 +211,7 @@ function AssesModal() {
                               Fixed Income{" "}
                             </label>
                             <input
-                              type="text"
+                              type="number"
                               className="fixed_input"
                               name="fixedincome"
                               value={assestState.fixedincome}
@@ -243,16 +229,16 @@ function AssesModal() {
               <button
                 type="button"
                 className="btn float-left modal_footer_btn"
-                onClick={() => handleSubmit()}
+                data-bs-dismiss="modal"
+                aria-label="Close"
+                onClick={() => setShow(false)}
               >
-                {isPreview ? "Update Asset" : "Add Asset"}
+                View Graph
               </button>
               <div>
                 <button
                   type="button"
                   className="btn clearall_btn"
-                  // data-bs-dismiss="modal"
-
                   onClick={() => resetInputs(setAssestState)}
                 >
                   Clear All
@@ -260,11 +246,9 @@ function AssesModal() {
                 <button
                   type="submit"
                   className="btn submit_btn"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                  onClick={() => handleDispatchAssest()}
+                  onClick={() => handleSubmit()}
                 >
-                  Submit
+                  {isPreview ? "Update Asset" : "Add Asset"}
                 </button>
               </div>
             </div>
@@ -272,137 +256,92 @@ function AssesModal() {
         </div>
       </div>
       <div className="modal-text">Duration</div>
-      {totalAssest.length === 0 ? (
-        <div>
-          <a
-            className="btn modalbtn"
-            data-bs-toggle="modal"
-            href="#exampleModalToggle"
-            role="button"
-          >
-            Update Assets
-          </a>
-        </div>
-      ) : (
-        <div style={{ width: "89%", margin: "5px 90px" }} className="modal-text2">
-          <div style={{ display: "flex", gap: "351px" }} className="modal-text3">
-            <div style={{ flex: "40%" }} className="modal-bodyy assest_added">
-              <div style={{ textAlign: "left" }}>
-                <h4
-                  style={{
-                    marginLeft: "25px",
-                    fontFamily: "sans-serif",
-                    marginTop: "10px",
-                  }}
-                >
-                  List Of Asset Added
-                </h4>
-              </div>
+      <div style={{ width: "89%", margin: "5px 90px" }} className="modal-text2">
+        <div style={{ display: "flex", gap: "351px" }} className="modal-text3">
+          <div style={{ flex: "40%" }} className="modal-bodyy assest_added">
+            <div style={{ textAlign: "left" }}>
+              <h4
+                style={{
+                  marginLeft: "25px",
+                  fontFamily: "sans-serif",
+                  marginTop: "10px",
+                }}
+              >
+                List Of Asset Added
+              </h4>
+            </div>
 
-              {totalAssest &&
-                totalAssest.map((assest, index) => {
-                  return (
-                    <div
-                      style={{ display: "flex" }}
-                      className="added_assest_name"
-                    >
-                      <div className="hover-effect">{`${index + 1} ${
-                        assest.assestname
-                      }`}</div>
-                      <div>
-                        <button
-                          className="btn3"
-                          data-bs-toggle="modal"
-                          href="#exampleModalToggle"
-                          role="button"
-                          onClick={() =>
-                            previewAssest(
-                              assest,
-                              setAssestState,
-                              setIsPreview,
-                              setUpdateAssest
-                            )
-                          }
-                        >
-                          Preview
-                        </button>
-                        <button
-                          onClick={() => dispatch(deleteAssest(assest.id))}
-                          style={{
-                            backgroundColor: "#283240",
-                            border: "none",
-                            outline: "none",
-                            color: "red",
-                          }}
-                        >
-                          <i class="bi bi-trash"></i>
-                        </button>
-                      </div>
+            {totalAssest.length > 0 ? (
+              totalAssest.map((assest : any, index : number) => {
+                return (
+                  <div
+                    style={{ display: "flex" }}
+                    className="added_assest_name"
+                  >
+                    <div className="hover-effect">{`${index + 1} ${
+                      assest.assestname
+                    }`}</div>
+                    <div>
+                    <a
+    href="#exampleModalToggle"
+    className="btn3"
+    data-bs-toggle="modal"
+    role="button"
+    onClick={() =>
+      previewAssest(
+        assest,
+        setAssestState,
+        setIsPreview,
+        setUpdateAssest
+      )
+    }
+  >
+    Preview
+  </a>
+                      <button
+                        onClick={() => dispatch(deleteAssest(assest.id))}
+                        style={{
+                          backgroundColor: "#283240",
+                          border: "none",
+                          outline: "none",
+                          color: "red",
+                        }}
+                      >
+                        <i className="bi bi-trash"></i>
+                      </button>
                     </div>
-                  );
-                })}
-            </div>
-            <div style={{ flex: "25%", marginLeft: "30px" }} className="update-btn">
-              <a
-                className="btn modalbtn"
-                data-bs-toggle="modal"
-                href="#exampleModalToggle"
-                role="button"
-              >
-                Update Assets
-              </a>
-              <button
-                type="button"
-                className="btn float-left modal_footer_btn"
-                onClick={() => dispatch(emptyAsssestState())}
-              >
-                Clear All
-              </button>
-            </div>
+                  </div>
+                );
+              })
+            ) : (
+              <div style={{ display: "flex" }} className="added_assest_name">
+                <div>Add assets to see the list!</div>
+              </div>
+            )}
+          </div>
+          <div
+            style={{ flex: "25%", marginLeft: "30px", textAlign: "end" }}
+            className="update-btn"
+          >
+            <a
+              className="btn modalbtn"
+              role="button"
+              onClick={() => setShow(true)}
+            >
+              Update Assets
+            </a>
+            <button
+              type="button"
+              className="btn float-left modal_footer_btn"
+              onClick={() => dispatch(emptyAsssestState())}
+            >
+              Clear All
+            </button>
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 }
 
 export default AssesModal;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

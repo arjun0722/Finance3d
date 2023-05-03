@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+
 
 export function checkAssest(assestState) {
   if (assestState.fixedincomecheckbox === true) {
@@ -12,7 +12,6 @@ export function checkAssest(assestState) {
     ) {
       return true;
     } else {
-      alert("error");
       return false;
     }
   } else if (assestState.fixedincomecheckbox === false) {
@@ -38,7 +37,7 @@ export function resetInputs(setAssestState) {
     duration: "",
     amountinvested: "",
     fixedincomecheckbox: false,
-    fixedincome: "",
+    fixedincome: 0,
   });
 }
 
@@ -72,7 +71,6 @@ const circleDatas = {
 };
 
 export function circleAlgo(allAssets) {
-
   circleDatas.SHORTTAXDEF = [];
   circleDatas.SHORTTAXABLE = [];
   circleDatas.SHORTTAXFREE = [];
@@ -82,7 +80,7 @@ export function circleAlgo(allAssets) {
   circleDatas.LONGTAXDEF = [];
   circleDatas.LONGTAXABLE = [];
   circleDatas.LONGTAXFREE = [];
- 
+
   allAssets.map((asset) => {
     const { duration, taxtreatment } = asset;
     if (!duration || !taxtreatment) {
@@ -199,11 +197,9 @@ export function circleAlgo(allAssets) {
         break;
     }
   });
-  
+
   return circleDatas;
 }
-
-
 
 export function sumOfTotalInvestment(res) {
   const obj = res;
