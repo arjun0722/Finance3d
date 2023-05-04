@@ -65,7 +65,7 @@ function AssesModal() {
 
   const [show, setShow] = useState<boolean>(true);
   const [assestState, setAssestState] = useState<any>(intialAssestValue);
-  const [updateAssest, setUpdateAssest] = useState();
+
   const [isPreview, setIsPreview] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);
   const [isSubmit, setIsSubmit] = useState<boolean>(false);
@@ -87,9 +87,16 @@ function AssesModal() {
   const handleSubmit = async () => {
     setIsSubmit(true);
     if (isPreview) {
-      dispatch(updateAssestReducer(assestState));
-      resetInputs(setAssestState);
-      setIsSubmit(false);
+      const res = await checkAssest(assestState);
+      if (res) {
+        if (assestState.fixedincome === "") {
+          assestState.fixedincome = 0;
+        }
+        dispatch(updateAssestReducer(assestState));
+        setIsSubmit(false);
+        resetInputs(setAssestState);
+        setIsPreview(false);
+      }
     } else {
       const res = await checkAssest(assestState);
       if (res) {
@@ -105,8 +112,6 @@ function AssesModal() {
         setIsError(true);
       }
     }
-
-    setIsPreview(false);
   };
 
   function handleCancel() {
@@ -347,12 +352,7 @@ function AssesModal() {
                         data-bs-toggle="modal"
                         role="button"
                         onClick={() =>
-                          previewAssest(
-                            assest,
-                            setAssestState,
-                            setIsPreview,
-                            setUpdateAssest
-                          )
+                          previewAssest(assest, setAssestState, setIsPreview)
                         }
                       >
                         {PREVIEW}

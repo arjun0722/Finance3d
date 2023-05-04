@@ -79,10 +79,10 @@ export function previewAssest(
   assest: any,
   setAssestState: React.Dispatch<React.SetStateAction<any>>,
   setIsPreview: React.Dispatch<React.SetStateAction<boolean>>,
-  setUpdateAssest: React.Dispatch<React.SetStateAction<any>>
+
 ): void {
   setAssestState(assest);
-  setUpdateAssest(assest);
+
   setIsPreview(true);
 }
 
