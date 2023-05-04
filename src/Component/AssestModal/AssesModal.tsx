@@ -6,6 +6,33 @@ import {
   updateAssestReducer,
   deleteAssest,
 } from "../../Redux/Reducer";
+import {
+  ASSEST_NAME,
+  ASSEST_CLASS,
+  RETIREMENT,
+  ROTH,
+  REAL_ESTATE_EQUITY,
+  LIFE_INSURANCE,
+  SAVINGS,
+  INVESTMENTS,
+  TAX_TREATMENT,
+  TAX_DEFERRED,
+  TAXABLE,
+  TAX_FREE,
+  DURATION,
+  SHORT,
+  INTERMEDIATE,
+  LONG,
+  AMOUNT_INVESTED,
+  FIXED_INCOME,
+  VIEW_GRAPH,
+  CLEAR_ALL,
+  LIST_OF_ASSEST_ADDED,
+  PREVIEW,
+  ADD_ASSESTS_TO_SEE_LIST,
+  UPDATE_ASSESTS,
+  FIELD_ERROR,
+} from "../../helper/constant";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 
 import "./AssestModal.css";
@@ -13,8 +40,7 @@ import "./AssestModal.css";
 function AssesModal() {
   const dispatch = useDispatch();
 
-  
-
+  //-----------intial inputs value----------//
   const intialAssestValue: {
     assestname: string;
     assestclass: string;
@@ -32,15 +58,25 @@ function AssesModal() {
     fixedincomecheckbox: false,
     fixedincome: 0,
   };
+
+  //-------------------------------------------//
+  //-------------state------------------------//
+  //-------------------------------------------//
+
   const [show, setShow] = useState<boolean>(true);
   const [assestState, setAssestState] = useState<any>(intialAssestValue);
   const [updateAssest, setUpdateAssest] = useState();
   const [isPreview, setIsPreview] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);
+  const [isSubmit, setIsSubmit] = useState<boolean>(false);
 
-  const totalAssest = useSelector((store : any) => store.assest);
+  const totalAssest = useSelector((store: any) => store.assest);
 
-  const getAssests = (e : any) => {
+  //---------------------------------------------------------------------------------//
+  //-------------functions related to assest submit and errors-----------------------//
+  //---------------------------------------------------------------------------------//
+
+  const getAssests = (e: any) => {
     const { value, name, checked } = e.target;
     setAssestState({
       ...assestState,
@@ -49,30 +85,48 @@ function AssesModal() {
   };
 
   const handleSubmit = async () => {
+    setIsSubmit(true);
     if (isPreview) {
       dispatch(updateAssestReducer(assestState));
+      resetInputs(setAssestState);
+      setIsSubmit(false);
     } else {
       const res = await checkAssest(assestState);
       if (res) {
         assestState.id = Date.now();
+        if (assestState.fixedincome === "") {
+          assestState.fixedincome = 0;
+        }
         dispatch(addAssest(assestState));
+        setIsSubmit(false);
         setIsError(false);
+        resetInputs(setAssestState);
       } else {
         setIsError(true);
       }
     }
-    resetInputs(setAssestState);
+
     setIsPreview(false);
   };
+
+  function handleCancel() {
+    resetInputs(setAssestState);
+    setIsPreview(false);
+    setShow(false);
+    setIsSubmit(false);
+  }
+
+  function handleViewGraph() {
+    resetInputs(setAssestState);
+    setShow(false);
+    setIsSubmit(false);
+    setIsPreview(false);
+  }
 
   useEffect(() => {
     setShow(true);
   }, []);
 
-  function handleCancel() {
-    setIsPreview(false);
-    setShow(false);
-  }
   return (
     <div className="modal-main">
       <div
@@ -100,7 +154,7 @@ function AssesModal() {
                   <form className="form1">
                     <div className="row1">
                       <div className="assestname">
-                        <label className="assestnamelabel">Asset Name</label>
+                        <label className="assestnamelabel">{ASSEST_NAME}</label>
                         <input
                           type="text"
                           className="assestname_input"
@@ -109,11 +163,14 @@ function AssesModal() {
                           onChange={(e) => getAssests(e)}
                           required
                         />
+                        {isSubmit && assestState.assestname === "" ? (
+                          <span className="field_error">{FIELD_ERROR}</span>
+                        ) : null}
                       </div>
 
                       <div className="assestclass">
                         <label className="assestclass_label">
-                          Asset Class <span style={{ color: "red" }}>*</span>
+                          {ASSEST_CLASS} <span style={{ color: "red" }}>*</span>
                         </label>
                         <select
                           className="select_aseestclass"
@@ -122,28 +179,27 @@ function AssesModal() {
                           onChange={(e) => getAssests(e)}
                         >
                           <option value=""></option>
-                          <option value="Retirement">Retirement</option>
-                          <option value="Roth">Roth</option>
+                          <option value="Retirement">{RETIREMENT}</option>
+                          <option value="Roth">{ROTH}</option>
                           <option value="Real Estate Equity">
-                            Real Estate Equity
+                            {REAL_ESTATE_EQUITY}
                           </option>
-                          <option value="Life Insurance">Life Insurance</option>
-                          <option value="Savings">Savings</option>
-                          <option value="Investments">Investments</option>
+                          <option value="Life Insurance">
+                            {LIFE_INSURANCE}
+                          </option>
+                          <option value="Savings">{SAVINGS}</option>
+                          <option value="Investments">{INVESTMENTS}</option>
                         </select>
+                        {isSubmit && assestState.assestclass === "" ? (
+                          <span className="field_error">{FIELD_ERROR}</span>
+                        ) : null}
                       </div>
                     </div>
                     <div className="row2">
-                      <div
-                        style={{
-                          display: "flex",
-                          flexDirection: "column",
-                          justifyContent: "center",
-                          alignItems: "flex-start",
-                        }}
-                      >
+                      <div className="row2_taxtreatment_duration">
                         <label className="taxtreatment_label">
-                          Tax Treatment <span style={{ color: "red" }}>*</span>
+                          {TAX_TREATMENT}{" "}
+                          <span style={{ color: "red" }}>*</span>
                         </label>
                         <select
                           className="select_taxtreatment"
@@ -152,14 +208,17 @@ function AssesModal() {
                           onChange={(e) => getAssests(e)}
                         >
                           <option value=""></option>
-                          <option value="tax-deferred">Tax Deferred</option>
-                          <option value="taxable">Taxable</option>
-                          <option value="tax-free">Tax Free</option>
+                          <option value="tax-deferred">{TAX_DEFERRED}</option>
+                          <option value="taxable">{TAXABLE}</option>
+                          <option value="tax-free">{TAX_FREE}</option>
                         </select>
+                        {isSubmit && assestState.taxtreatment === "" ? (
+                          <span className="field_error">{FIELD_ERROR}</span>
+                        ) : null}
                       </div>
                       <div className="row3">
                         <label className="duration_label">
-                          Duration <span style={{ color: "red" }}>*</span>
+                          {DURATION} <span style={{ color: "red" }}>*</span>
                         </label>
                         <select
                           className="select_duration"
@@ -168,17 +227,20 @@ function AssesModal() {
                           onChange={(e) => getAssests(e)}
                         >
                           <option value=""></option>
-                          <option value="Short">Short</option>
-                          <option value="Intermediate">Intermediate</option>
-                          <option value="Long">Long</option>
+                          <option value="Short">{SHORT}</option>
+                          <option value="Intermediate">{INTERMEDIATE}</option>
+                          <option value="Long">{LONG}</option>
                         </select>
+                        {isSubmit && assestState.duration === "" ? (
+                          <span className="field_error">{FIELD_ERROR}</span>
+                        ) : null}
                       </div>
                     </div>
 
                     <div className="row4">
                       <div className="amountinvested">
                         <label className="amountinvested_label">
-                          Amount Invested{" "}
+                          {AMOUNT_INVESTED}{" "}
                           <span style={{ color: "red" }}>*</span>
                         </label>
                         <input
@@ -188,10 +250,13 @@ function AssesModal() {
                           name="amountinvested"
                           onChange={(e) => getAssests(e)}
                         />
+                        {isSubmit && assestState.amountinvested === "" ? (
+                          <span className="field_error">{FIELD_ERROR}</span>
+                        ) : null}
                       </div>
                       <div className="fixedincome">
                         <label className="label_fixedincome">
-                          Fixed Income
+                          {FIXED_INCOME}
                         </label>
                         <input
                           type="checkbox"
@@ -208,7 +273,7 @@ function AssesModal() {
                         {assestState.fixedincomecheckbox === true ? (
                           <div className="FixedIncome">
                             <label className="FixedIncome_label">
-                              Fixed Income{" "}
+                              {FIXED_INCOME}
                             </label>
                             <input
                               type="number"
@@ -217,6 +282,11 @@ function AssesModal() {
                               value={assestState.fixedincome}
                               onChange={(e) => getAssests(e)}
                             />
+                            {assestState.fixedincomecheckbox === true &&
+                            isSubmit &&
+                            assestState.fixedincome === "" ? (
+                              <span className="field_error">{FIELD_ERROR}</span>
+                            ) : null}
                           </div>
                         ) : null}
                       </div>
@@ -231,9 +301,9 @@ function AssesModal() {
                 className="btn float-left modal_footer_btn"
                 data-bs-dismiss="modal"
                 aria-label="Close"
-                onClick={() => setShow(false)}
+                onClick={() => handleViewGraph()}
               >
-                View Graph
+                {VIEW_GRAPH}
               </button>
               <div>
                 <button
@@ -241,7 +311,7 @@ function AssesModal() {
                   className="btn clearall_btn"
                   onClick={() => resetInputs(setAssestState)}
                 >
-                  Clear All
+                  {CLEAR_ALL}
                 </button>
                 <button
                   type="submit"
@@ -255,57 +325,41 @@ function AssesModal() {
           </div>
         </div>
       </div>
-      <div className="modal-text">Duration</div>
-      <div style={{ width: "89%", margin: "5px 90px" }} className="modal-text2">
-        <div style={{ display: "flex", gap: "351px" }} className="modal-text3">
-          <div style={{ flex: "40%" }} className="modal-bodyy assest_added">
-            <div style={{ textAlign: "left" }}>
-              <h4
-                style={{
-                  marginLeft: "25px",
-                  fontFamily: "sans-serif",
-                  marginTop: "10px",
-                }}
-              >
-                List Of Asset Added
-              </h4>
+      <div className="modal-text">{DURATION}</div>
+      <div className="modal-text2">
+        <div className="modal-text3">
+          <div className="modal-bodyy assest_added">
+            <div className="list-assest-added">
+              <h4 className="assest_list_h4">{LIST_OF_ASSEST_ADDED}</h4>
             </div>
 
             {totalAssest.length > 0 ? (
-              totalAssest.map((assest : any, index : number) => {
+              totalAssest.map((assest: any, index: number) => {
                 return (
-                  <div
-                    style={{ display: "flex" }}
-                    className="added_assest_name"
-                  >
+                  <div className="added_assest_name">
                     <div className="hover-effect">{`${index + 1} ${
                       assest.assestname
                     }`}</div>
                     <div>
-                    <a
-    href="#exampleModalToggle"
-    className="btn3"
-    data-bs-toggle="modal"
-    role="button"
-    onClick={() =>
-      previewAssest(
-        assest,
-        setAssestState,
-        setIsPreview,
-        setUpdateAssest
-      )
-    }
-  >
-    Preview
-  </a>
+                      <a
+                        href="#exampleModalToggle"
+                        className="btn3"
+                        data-bs-toggle="modal"
+                        role="button"
+                        onClick={() =>
+                          previewAssest(
+                            assest,
+                            setAssestState,
+                            setIsPreview,
+                            setUpdateAssest
+                          )
+                        }
+                      >
+                        {PREVIEW}
+                      </a>
                       <button
                         onClick={() => dispatch(deleteAssest(assest.id))}
-                        style={{
-                          backgroundColor: "#283240",
-                          border: "none",
-                          outline: "none",
-                          color: "red",
-                        }}
+                        className="delete_assest_btn"
                       >
                         <i className="bi bi-trash"></i>
                       </button>
@@ -314,28 +368,25 @@ function AssesModal() {
                 );
               })
             ) : (
-              <div style={{ display: "flex" }} className="added_assest_name">
-                <div>Add assets to see the list!</div>
+              <div className="added_assest_name">
+                <div>{ADD_ASSESTS_TO_SEE_LIST}</div>
               </div>
             )}
           </div>
-          <div
-            style={{ flex: "25%", marginLeft: "30px", textAlign: "end" }}
-            className="update-btn"
-          >
+          <div className="update-btn">
             <a
               className="btn modalbtn"
               role="button"
               onClick={() => setShow(true)}
             >
-              Update Assets
+              {UPDATE_ASSESTS}
             </a>
             <button
               type="button"
               className="btn float-left modal_footer_btn"
               onClick={() => dispatch(emptyAsssestState())}
             >
-              Clear All
+              {CLEAR_ALL}
             </button>
           </div>
         </div>

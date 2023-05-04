@@ -321,3 +321,15 @@ div#exampleModalToggle {
     padding: 0px 15px 0px 15px;
   }
 }
+.graph_inner_container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.graph_all{
+  transform: rotate(0deg);
+
+  transform-origin: center;
+  text-align: center;
+}

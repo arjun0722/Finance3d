@@ -40,6 +40,10 @@ export default function AssestCircle({
     });
   }, [fixedincome, assestname, percentageInvested]);
 
+  //---------------------------------------------------------------------------------//
+  //-------------css for the fixed income and bubble acc to grid-----------------------//
+  //---------------------------------------------------------------------------------//
+
   if (
     value === "SHORTTAXDEF" ||
     value === "INTERNTAXDEF" ||
@@ -53,9 +57,9 @@ export default function AssestCircle({
         #FF8C7C 50%,
         #FF7B6A 75%,
         #FF6B58 100%
-      )
-      ,linear-gradient(
-        to top, #a8a8a8 ${fixedincome}%  ,  
+      )`,
+      backgroundImage: `linear-gradient(
+        to top, #a8a8a8 ${fixedincome}%  ,
         #FFD6C7 0%,
         #FFBFB0 25%,
         #FF8C7C 50%,
@@ -75,7 +79,8 @@ export default function AssestCircle({
         #9cb9ca 50%,
         #7ea1b2 75%,
         #627f90 100%
-      ),linear-gradient(
+      )`,
+      backgroundImage: `linear-gradient(
         to top, #B8B8B8  ${fixedincome}%,
         #f0f7f9 0%,
         #d8ebf1 25%,
@@ -97,8 +102,8 @@ export default function AssestCircle({
         #567087 50%,
         #7a9db4 75%,
         #a4c4dc 100%
-      ), 
-      linear-gradient(
+      )`,
+      backgroundImage: `linear-gradient(
         to top, #a8a8a8 ${fixedincome}%,
         #2c3b4d 0%,
         #3d4f64 25%,
@@ -109,6 +114,7 @@ export default function AssestCircle({
       )`,
     };
   }
+
   // Calculate the percentage of gray color to fill from the bottom up
   const grayPercentage = fixedincome;
 

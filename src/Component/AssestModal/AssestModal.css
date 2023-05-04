@@ -1,4 +1,3 @@
-
 .modal-text {
   font-size: 22px;
   font-weight: 500;
@@ -9,7 +8,7 @@
   background-color: #eb7718;
   border: none;
   font-size: 16px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   color: white;
   font-weight: 100;
   margin: auto;
@@ -20,7 +19,7 @@
   border: none;
   outline: none;
   font-size: 16px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   cursor: pointer;
   color: white;
 }
@@ -51,7 +50,7 @@
   color: rgb(70, 239, 245) !important;
   cursor: pointer;
   font-size: 15px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 .assestmodal {
   max-width: 706px;
@@ -105,7 +104,7 @@
 .assestnamelabel {
   margin-bottom: 8px;
   font-size: 15px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 .assestname_input {
   width: 280px;
@@ -122,7 +121,7 @@
 .assestclass_label {
   margin-bottom: 8px;
   font-size: 15px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 .select_aseestclass {
   width: 280px;
@@ -141,7 +140,7 @@
 .taxtreatment_label {
   margin-bottom: 8px;
   font-size: 15px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 .select_taxtreatment {
   width: 280px;
@@ -158,7 +157,7 @@
 .duration_label {
   margin-bottom: 8px;
   font-size: 15px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 .select_duration {
   width: 280px;
@@ -175,14 +174,14 @@
   align-items: flex-start;
 }
 .row5 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: start;
-    margin: 7px 12px 8px 12px;
-    row-gap: 16px;
-    column-gap: 65px;
-    align-items: flex-start;
-  }
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  margin: 7px 12px 8px 12px;
+  row-gap: 16px;
+  column-gap: 65px;
+  align-items: flex-start;
+}
 .amountinvested {
   display: flex;
   flex-direction: column;
@@ -192,7 +191,7 @@
 .amountinvested_label {
   margin-bottom: 8px;
   font-size: 15px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 .amountinvest_input {
   width: 280px;
@@ -210,7 +209,7 @@
 .label_fixedincome {
   margin-right: 8px;
   font-size: 15px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 .checkbox {
   margin-left: 8px;
@@ -226,12 +225,11 @@
   padding: 7px 16px;
   font-weight: bold;
   font-size: 15px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
-.modal_footer_btn:hover{
+.modal_footer_btn:hover {
   color: white;
 }
-
 
 .clearall_btn {
   margin: 9px 27px;
@@ -242,7 +240,7 @@
   padding: 8px 16px;
   font-size: 16px;
   font-weight: bold;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .submit_btn {
@@ -253,10 +251,10 @@
   border-radius: 8px;
   padding: 8px 16px;
   font-size: 15px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
-.submit_btn:hover{
-  color:white;
+.submit_btn:hover {
+  color: white;
 }
 
 .assest_added {
@@ -268,8 +266,8 @@
   margin-top: 8px;
   /* margin-bottom: 100px; */
   padding: 15px 0px 15px 0px;
-height: auto;
-font-family: 'Poppins', sans-serif;
+  height: auto;
+  font-family: "Poppins", sans-serif;
 }
 
 .added_assest_name {
@@ -287,134 +285,157 @@ font-family: 'Poppins', sans-serif;
   overflow: hidden;
   font-size: 17px;
   text-decoration: underline;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
-.fixed_input{
-    width: 280px;
-    height: 42px;
-    border-radius: 7px;
-    float: left !important;
+.fixed_input {
+  width: 280px;
+  height: 42px;
+  border-radius: 7px;
+  float: left !important;
 }
-.FixedIncome{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+.FixedIncome {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }
-.FixedIncome_label{
-    margin-bottom: 8px;
-    font-size: 15px;
-    font-family: 'Poppins', sans-serif;
+.FixedIncome_label {
+  margin-bottom: 8px;
+  font-size: 15px;
+  font-family: "Poppins", sans-serif;
+}
+.modal-bodyy assest_added{
+  flex: 40%;
+}
+.list-assest-added{
+  text-align: left;
+}
+.added_assest_name{
+  display: flex;
+}
+.delete_assest_btn{
+background-color: #283240;
+border: none;
+outline: 'none';
+color: red;
 }
 
-.row1,.row2,.row4,.row5{
-
+.row1,
+.row2,
+.row4,
+.row5 {
 }
-.modal-text2{
-  
+.modal-text2 {
+  width: 89%;
+  margin: 5px 90px;
 }
-.modal-text3{
-
+.modal-text3 {
+  display: flex;
+  gap: 351px;
 }
-.modal-main{
-
+.modal-main {
 }
-.update-btn{
-
+.update-btn {
+  flex: 25%;
+  margin-left: 30px;
+  text-align: end;
 }
 @media (max-width: 640px) {
-  .modal{
+  .modal {
     top: 8%;
   }
-  .log{
+  .log {
     margin-right: 0px;
   }
-  div#exampleModalToggle{
+  div#exampleModalToggle {
     margin: -67px 0px;
   }
-  .modal-content{
+  .modal-content {
     /* padding: 25px 0px 25px 0px; */
   }
-  .form1{
+  .form1 {
     padding: 25px 0px 0px 0px;
   }
-    .row1,.row2,.row4,.row5{
-gap: 0px;
-display: flex;
-flex-direction: column;
-    }
-    .modal-footer{
-      display: unset;
-      padding: 0px !important;
-    }
-    .assest_added{
-      display: flex;
-      flex-direction: column;
-    }
-    .modal-text2{
-      width: 100% !important;
-      margin: 0px 0px !important;
-display: flex;
-flex-direction: column;
-padding: 0px 15px 0px 15px !important;
-    }
-    .modal-text3{
-      gap: 0px !important;
-      display: flex;
-      flex-direction: column;
-    }
-    .modal-main{
-      display: flex;
-      flex-direction: column;
-    }
-    .assest_added{
-      width: 100%;
-      min-height: auto !important;
-      height: auto !important;
-      padding: 10px 0px 10px 0px !important;
-    }
-    .update-btn{
-      display: flex;
-      flex-wrap: wrap;
-      margin-left: 0px !important;
-      justify-content: center;
-      margin-top: 1rem;
-    }
+  .row1,
+  .row2,
+  .row4,
+  .row5 {
+    gap: 0px;
+    display: flex;
+    flex-direction: column;
+  }
+  .modal-footer {
+    display: unset;
+    padding: 0px !important;
+  }
+  .assest_added {
+    display: flex;
+    flex-direction: column;
+  }
+  .modal-text2 {
+    width: 100% !important;
+    margin: 0px 0px !important;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 15px 0px 15px !important;
+  }
+  .modal-text3 {
+    gap: 0px !important;
+    display: flex;
+    flex-direction: column;
+  }
+  .modal-main {
+    display: flex;
+    flex-direction: column;
+  }
+  .assest_added {
+    width: 100%;
+    min-height: auto !important;
+    height: auto !important;
+    padding: 10px 0px 10px 0px !important;
+  }
+  .update-btn {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 0px !important;
+    justify-content: center;
+    margin-top: 1rem;
+  }
 }
 
 /* 
 ----------------------for medium screen-------------------  */
 
-@media (max-width:768px) {
-  .modal-text2{
- 
+@media (max-width: 768px) {
+  .modal-text2 {
     display: flex;
-justify-content: space-around;  
-width: 100% !important;
-    margin: 0px 0px !important;}
-    .modal-text3{
-      gap: 0px !important;
-    }
-    .update-btn{
-      padding-top: 13%;
-    }
-    div#exampleModalToggle {
-      -webkit-backdrop-filter: blur(5px);
-      backdrop-filter: blur(5px);
-      background-color: rgba(20, 29, 44, 0.84);
-      box-sizing: border-box;
-      position: absolute;
-      right: 0;
-      border: 0;
-      margin-top: 4em;
-      margin-bottom: 2em;
-      margin-left: 0em;
-      margin-right: 0em;
+    justify-content: space-around;
+    width: 100% !important;
+    margin: 0px 0px !important;
+  }
+  .modal-text3 {
+    gap: 0px !important;
+  }
+  .update-btn {
+    padding-top: 13%;
+  }
+  div#exampleModalToggle {
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    background-color: rgba(20, 29, 44, 0.84);
+    box-sizing: border-box;
+    position: absolute;
+    right: 0;
+    border: 0;
+    margin-top: 4em;
+    margin-bottom: 2em;
+    margin-left: 0em;
+    margin-right: 0em;
   }
 }
 
-@media (min-width: 992px) and (max-width: 1199.98px){
+@media (min-width: 992px) and (max-width: 1199.98px) {
   div#exampleModalToggle {
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
@@ -427,8 +448,9 @@ width: 100% !important;
     margin-bottom: 0em;
     margin-left: 0em;
     margin-right: 0em;
-}}
-@media (min-width: 640px) and (max-width: 768px){
+  }
+}
+@media (min-width: 640px) and (max-width: 768px) {
   div#exampleModalToggle {
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
@@ -440,7 +462,7 @@ width: 100% !important;
     margin-top: 4em;
     margin-left: 0em;
     margin-right: 0em;
-}
+  }
 }
 @media (min-width: 320px) and (max-width: 640px) {
   div#exampleModalToggle {
@@ -451,6 +473,21 @@ width: 100% !important;
     position: absolute;
     right: 0;
     border: 0;
-   
+  }
 }
+.field_error{
+  font-size: 13px;
+  color: red;
+  margin-top: 1px;
+}
+.assest_list_h4{
+margin-left: 25px;
+font-family: sans-serif;
+margin-top: 10px;
+}
+.row2_taxtreatment_duration{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
 }

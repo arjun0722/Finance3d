@@ -2,6 +2,16 @@ import React, { useEffect, useState } from "react";
 import { circleAlgo, sumOfTotalInvestment } from "../../helper/helper";
 import { useSelector } from "react-redux";
 import AssestCircle from "../AssestCircle/AssestCircle";
+import {
+  LOGO,
+  TAX_TREATMENT,
+  TAX_DEFERRED,
+  TAXABLE,
+  TAX_FREE,
+  SHORT_TERM,
+  INTERMEDIATE_TERM,
+  LONG_TERM,
+} from "../../helper/constant";
 
 import "./Chart.css";
 
@@ -90,6 +100,10 @@ function Chart() {
   useEffect(() => {
     circleData();
   }, [totalAssest]);
+
+  //---------------------------------------------------------------------------------//
+  //-------------compoenent render and update acc to the data-----------------------//
+  //---------------------------------------------------------------------------------//
 
   useEffect(() => {
     if (totalAssest.length === 0) {
@@ -273,6 +287,10 @@ function Chart() {
     setLongTaxFreeTotalfixincome(longTaxFreefixInvestment);
   }, [totalAssest]);
 
+  //---------------------------------------------------------------------------------//
+  //-------------bubble size acc to the perecentage invested-----------------------//
+  //---------------------------------------------------------------------------------//
+
   let size = 140;
   interface InvestmentTotals {
     [key: string]: {
@@ -329,7 +347,10 @@ function Chart() {
     },
     {}
   );
-  //----------------------------------------//
+
+  //---------------------------------------------------------------------------------//
+  //-------------component update acc to the name of assest-----------------------//
+  //---------------------------------------------------------------------------------//
 
   useEffect(() => {
     setShortTaxDefTotalname(
@@ -388,45 +409,30 @@ function Chart() {
 
   return (
     <>
-      <div className="logo">LOGO</div>
+      <div className="logo">{LOGO}</div>
       <div className="main-chart overlay">
         <div className="log">{`Total Investment : $${totalInvestment?.toLocaleString()}`}</div>
         <div className="outer-container">
-          {/* <div className="logo-text">Your Text Here</div> // new text element */}
-
           <div className="graph-container">
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                height: "100%",
-              }}
-            >
-              <div
-                style={{
-                  transform: "rotate(0deg)",
-                  transformOrigin: "center",
-                  textAlign: "center",
-                }}
-              >
-                <div className="y-label">Tax Treatment</div>
+            <div className="graph_inner_container">
+              <div className="graph_all">
+                <div className="y-label">{TAX_TREATMENT}</div>
               </div>
             </div>
 
             <div className="y-axis">
               <div className="label"></div>
-              <div className="label">Tax Deferred</div>
-              <div className="label">Taxable</div>
-              <div className="label">Tax Free</div>
+              <div className="label">{TAX_DEFERRED}</div>
+              <div className="label">{TAXABLE}</div>
+              <div className="label">{TAX_FREE}</div>
             </div>
             <div className="chart">
               {/* <div className="logo-text">Your Text Here</div> */}
 
               <div className="x-axis">
-                <div className="label">Short Term</div>
-                <div className="label">Intermediate Term (Opportunity)</div>
-                <div className="label">Long Term</div>
+                <div className="label">{SHORT_TERM}</div>
+                <div className="label">{INTERMEDIATE_TERM}</div>
+                <div className="label">{LONG_TERM}</div>
               </div>
 
               <div className="grid-container">

@@ -1,6 +1,20 @@
+import { SetStateAction, Dispatch } from "react";
 
+//---------------------------------------------------------------------------------//
+//-------------check assest either they are undefined or not-----------------------//
+//---------------------------------------------------------------------------------//
 
-export function checkAssest(assestState) {
+interface AssestState {
+  fixedincomecheckbox: boolean;
+  assestname: string;
+  assestclass: string;
+  taxtreatment: string;
+  duration: string;
+  amountinvested: string;
+  fixedincome?: string;
+}
+
+export function checkAssest(assestState: AssestState) {
   if (assestState.fixedincomecheckbox === true) {
     if (
       assestState.assestname !== "" &&
@@ -29,8 +43,24 @@ export function checkAssest(assestState) {
   }
 }
 
-export function resetInputs(setAssestState) {
-  return setAssestState({
+//---------------------------------------------------------------------------------//
+//-------------reset assest to zero and undefined-----------------------//
+//---------------------------------------------------------------------------------//
+
+interface AssetState {
+  assestname: string;
+  assestclass: string;
+  taxtreatment: string;
+  duration: string;
+  amountinvested: string;
+  fixedincomecheckbox: boolean;
+  fixedincome: number;
+}
+
+export function resetInputs(
+  setAssestState: Dispatch<SetStateAction<AssetState>>
+): void {
+  setAssestState({
     assestname: "",
     assestclass: "",
     taxtreatment: "",
@@ -41,24 +71,26 @@ export function resetInputs(setAssestState) {
   });
 }
 
+//---------------------------------------------------------------------------------//
+//-------------preview assest-----------------------//
+//---------------------------------------------------------------------------------//
+
 export function previewAssest(
-  assest,
-  setAssestState,
-  setIsPreview,
-  setUpdateAssest
-) {
+  assest: any,
+  setAssestState: React.Dispatch<React.SetStateAction<any>>,
+  setIsPreview: React.Dispatch<React.SetStateAction<boolean>>,
+  setUpdateAssest: React.Dispatch<React.SetStateAction<any>>
+): void {
   setAssestState(assest);
   setUpdateAssest(assest);
   setIsPreview(true);
 }
 
-export function dataBridge(datapreview) {
-  return datapreview;
-}
+//---------------------------------------------------------------------------------//
+//---set data according to the grid----//
+//---------------------------------------------------------------------------------//
 
-export function updateAssestState(updateAssest) {}
-
-const circleDatas = {
+const circleDatas: any = {
   SHORTTAXDEF: [],
   SHORTTAXABLE: [],
   SHORTTAXFREE: [],
@@ -70,7 +102,7 @@ const circleDatas = {
   LONGTAXFREE: [],
 };
 
-export function circleAlgo(allAssets) {
+export function circleAlgo(allAssets: any) {
   circleDatas.SHORTTAXDEF = [];
   circleDatas.SHORTTAXABLE = [];
   circleDatas.SHORTTAXFREE = [];
@@ -81,7 +113,7 @@ export function circleAlgo(allAssets) {
   circleDatas.LONGTAXABLE = [];
   circleDatas.LONGTAXFREE = [];
 
-  allAssets.map((asset) => {
+  allAssets.map((asset: any) => {
     const { duration, taxtreatment } = asset;
     if (!duration || !taxtreatment) {
       console.error("Asset is missing required properties:", asset);
@@ -93,17 +125,17 @@ export function circleAlgo(allAssets) {
         switch (taxtreatment) {
           case "tax-deferred":
             let index1 = circleDatas.SHORTTAXDEF.findIndex(
-              (obj) => obj.id === asset.id
+              (obj: any) => obj.id === asset.id
             );
 
             if (index1 !== -1) {
               circleDatas.SHORTTAXDEF.splice(index1, 1);
             }
-            circleDatas.SHORTTAXDEF.push(asset);
+            circleDatas?.SHORTTAXDEF?.push(asset);
             break;
           case "taxable":
             let index2 = circleDatas.SHORTTAXABLE.findIndex(
-              (obj) => obj.id === asset.id
+              (obj: any) => obj.id === asset.id
             );
             if (index2 !== -1) {
               circleDatas.SHORTTAXABLE.splice(index2, 1);
@@ -112,7 +144,7 @@ export function circleAlgo(allAssets) {
             break;
           case "tax-free":
             let index3 = circleDatas.SHORTTAXFREE.findIndex(
-              (obj) => obj.id === asset.id
+              (obj: any) => obj.id === asset.id
             );
             if (index3 !== -1) {
               circleDatas.SHORTTAXABLE.splice(index3, 1);
@@ -128,7 +160,7 @@ export function circleAlgo(allAssets) {
         switch (taxtreatment) {
           case "tax-deferred":
             let index4 = circleDatas.INTERNTAXDEF.findIndex(
-              (obj) => obj.id === asset.id
+              (obj: any) => obj.id === asset.id
             );
             if (index4 !== -1) {
               circleDatas.INTERNTAXDEF.splice(index4, 1);
@@ -137,7 +169,7 @@ export function circleAlgo(allAssets) {
             break;
           case "taxable":
             let index5 = circleDatas.INTERNTAXABLE.findIndex(
-              (obj) => obj.id === asset.id
+              (obj: any) => obj.id === asset.id
             );
             if (index5 !== -1) {
               circleDatas.INTERNTAXABLE.splice(index5, 1);
@@ -146,7 +178,7 @@ export function circleAlgo(allAssets) {
             break;
           case "tax-free":
             let index6 = circleDatas.INTERNTAXFREE.findIndex(
-              (obj) => obj.id === asset.id
+              (obj: any) => obj.id === asset.id
             );
             if (index6 !== -1) {
               circleDatas.INTERNTAXABLE.splice(index6, 1);
@@ -162,7 +194,7 @@ export function circleAlgo(allAssets) {
         switch (taxtreatment) {
           case "tax-deferred":
             let index7 = circleDatas.LONGTAXDEF.findIndex(
-              (obj) => obj.id === asset.id
+              (obj: any) => obj.id === asset.id
             );
             if (index7 !== -1) {
               circleDatas.LONGTAXDEF.splice(index7, 1);
@@ -171,7 +203,7 @@ export function circleAlgo(allAssets) {
             break;
           case "taxable":
             let index8 = circleDatas.LONGTAXABLE.findIndex(
-              (obj) => obj.id === asset.id
+              (obj: any) => obj.id === asset.id
             );
             if (index8 !== -1) {
               circleDatas.LONGTAXABLE.splice(index8, 1);
@@ -180,7 +212,7 @@ export function circleAlgo(allAssets) {
             break;
           case "tax-free":
             let index9 = circleDatas.LONGTAXFREE.findIndex(
-              (obj) => obj.id === asset.id
+              (obj: any) => obj.id === asset.id
             );
             if (index9 !== -1) {
               circleDatas.LONGTAXABLE.splice(index9, 1);
@@ -201,19 +233,34 @@ export function circleAlgo(allAssets) {
   return circleDatas;
 }
 
-export function sumOfTotalInvestment(res) {
-  const obj = res;
-  const totalAmountInvested = Object.keys(obj).reduce((acc, key) => {
-    if (Array.isArray(obj[key])) {
-      return (
-        acc +
-        obj[key].reduce((innerAcc, innerObj) => {
-          return innerAcc + Number(innerObj.amountinvested);
-        }, 0)
-      );
-    }
-    return acc;
-  }, 0);
+//---------------------------------------------------------------------------------//
+//-------------cummulative investment from all grid -----------------------//
+//---------------------------------------------------------------------------------//
+
+interface Investment {
+  amountinvested: number;
+}
+
+interface Asset {
+  [key: string]: Investment[] | any;
+}
+
+export function sumOfTotalInvestment(res: Asset): number {
+  const obj: Asset = res;
+  const totalAmountInvested = Object.keys(obj).reduce(
+    (acc: number, key: string) => {
+      if (Array.isArray(obj[key])) {
+        return (
+          acc +
+          obj[key].reduce((innerAcc: number, innerObj: Investment) => {
+            return innerAcc + Number(innerObj.amountinvested);
+          }, 0)
+        );
+      }
+      return acc;
+    },
+    0
+  );
 
   return totalAmountInvested;
 }
