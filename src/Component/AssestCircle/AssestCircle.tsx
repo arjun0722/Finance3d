@@ -115,9 +115,6 @@ export default function AssestCircle({
     };
   }
 
-  // Calculate the percentage of gray color to fill from the bottom up
-  const grayPercentage = fixedincome;
-
   return (
     <div className="container">
       <div
