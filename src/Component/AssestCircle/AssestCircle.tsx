@@ -123,7 +123,7 @@ export default function AssestCircle({
           width: `${radiuss}px`,
           height: `${radiuss}px`,
           borderRadius: "50%",
-          ...backgroundStyle, // used object spread syntax
+          ...backgroundStyle,
           boxShadow: "0px 1px 7px rgba(0, 0, 0, 0.7)",
           transform: "translateZ(20px)",
         }}
