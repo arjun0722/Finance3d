@@ -59,14 +59,12 @@ export default function AssestCircle({
         #FF6B58 100%
       )`,
       backgroundImage: `linear-gradient(
-        127 deg, #a8a8a8 ${fixedincome}%  ,
-        #a8a8a8 0%,
-        #ffe4e0 0%, 
-       #ffb2a8 25%,
-        #ff8e80 50%,
-        #ff7b6a 75%,
-        #ff6b58 100%,
-        #ff6b58 100% ${100 - fixedincome}%)`,
+        to top, #a8a8a8 ${fixedincome}%  ,
+        #FFD6C7 0%,
+        #FFBFB0 25%,
+        #FF8C7C 50%,
+        #FF7B6A 75%,
+        #FF6B58 100% ${100 - fixedincome}%)`,
     };
   } else if (
     value === "SHORTTAXABLE" ||
@@ -83,7 +81,7 @@ export default function AssestCircle({
         #627f90 100%
       )`,
       backgroundImage: `linear-gradient(
-        -213deg, #B8B8B8  ${fixedincome}%,
+        to top, #B8B8B8  ${fixedincome}%,
         #f0f7f9 0%,
         #d8ebf1 25%,
         #9cb9ca 50%,
@@ -105,7 +103,13 @@ export default function AssestCircle({
         #7a9db4 75%,
         #a4c4dc 100%
       )`,
-      backgroundImage: `linear-gradient(-249deg, rgb(168, 168, 168) 0%, rgb(44, 59, 77) 100%, rgb(61, 79, 100) 25%, #293241 0, #293241 75%, #293241 100%, #293241 100%)
+      backgroundImage: `linear-gradient(
+        to top, #a8a8a8 ${fixedincome}%,
+        #2c3b4d 0%,
+        #3d4f64 25%,
+        #567087 50%,
+        #7a9db4 75%,
+        #a4c4dc 100%
         ${100 - fixedincome}%
       )`,
     };
@@ -120,7 +124,7 @@ export default function AssestCircle({
           height: `${radiuss}px`,
           borderRadius: "50%",
           ...backgroundStyle,
-         
+          boxShadow: "0px 1px 7px rgba(0, 0, 0, 0.7)",
           transform: "translateZ(20px)",
         }}
         data-toggle="tooltip"
