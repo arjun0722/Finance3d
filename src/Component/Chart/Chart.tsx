@@ -291,7 +291,7 @@ function Chart() {
   //-------------bubble size acc to the perecentage invested-----------------------//
   //---------------------------------------------------------------------------------//
 
-  let size = 140;
+  let size = 160;
   interface InvestmentTotals {
     [key: string]: {
       size: number;
@@ -328,15 +328,15 @@ function Chart() {
         const percentageDiff = (value * 100) / totalInvestment;
         let size;
         if (percentageDiff >= 80) {
-          size = 140;
+          size = 160;
         } else if (percentageDiff >= 60) {
           size = 130;
         } else if (percentageDiff >= 41) {
-          size = 120;
-        } else if (percentageDiff >= 21) {
-          size = 110;
-        } else {
           size = 100;
+        } else if (percentageDiff >= 21) {
+          size = 70;
+        } else {
+          size = 40;
         }
         acc[key] = {
           size,
