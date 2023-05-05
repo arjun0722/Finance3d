@@ -1,8 +1,8 @@
 .container {
   display: flex;
-  height: 18px;
+  height: auto;
   width: 100%;
-  padding: 5px 0px 5px 0px;
+  padding: 0px 0px 0px 0px;
 }
 h5 {
   font-size: 16px;

@@ -211,7 +211,9 @@
 }
 
 .circle-container {
-  height: 201px;
+  height: -webkit-fill-available;
+  display: flex;
+  align-items: center;
 }
 
 .text-container {
@@ -235,7 +237,7 @@
   font-weight: bold;
   font-size: 15px;
   order: 1;
-  margin: 0px 25px;
+  margin: 0px 0px 0px 10px;
 }
 
 .circle-date {
@@ -268,7 +270,7 @@ div#exampleModalToggle {
 }
 
 .circle-Category {
-  font-size: 17px;
+  font-size: 14px;
   font-weight: bold;
 }
 @media (max-width: 1400) {
