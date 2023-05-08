@@ -336,7 +336,7 @@ function Chart() {
         } else if (percentageDiff >= 21) {
           size = 70;
         } else {
-          size = 40;
+          size = 40; 
         }
         acc[key] = {
           size,

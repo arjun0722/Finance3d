@@ -59,7 +59,7 @@ export default function AssestCircle({
         #FF6B58 100%
       )`,
       backgroundImage: `linear-gradient(
-        to top, #a8a8a8 ${fixedincome}%  ,
+        to bottom, #a8a8a8 ${fixedincome}%  ,
         #FFD6C7 0%,
         #FFBFB0 25%,
         #FF8C7C 50%,
@@ -81,7 +81,7 @@ export default function AssestCircle({
         #627f90 100%
       )`,
       backgroundImage: `linear-gradient(
-        to top, #B8B8B8  ${fixedincome}%,
+        to bottom, #B8B8B8  ${fixedincome}%,
         #f0f7f9 0%,
         #d8ebf1 25%,
         #9cb9ca 50%,
@@ -104,7 +104,7 @@ export default function AssestCircle({
         #a4c4dc 100%
       )`,
       backgroundImage: `linear-gradient(
-        to top, #a8a8a8 ${fixedincome}%,
+        to bottom, #a8a8a8 ${fixedincome}%,
         #2c3b4d 0%,
         #3d4f64 25%,
         #567087 50%,
