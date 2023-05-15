@@ -27,3 +27,4 @@ export const SHORT_TERM = "Short Term";
 export const INTERMEDIATE_TERM = "Intermediate Term (Opportunity)";
 export const LONG_TERM = "Long Term";
 export const FIELD_ERROR = "Required fields not completed"
+

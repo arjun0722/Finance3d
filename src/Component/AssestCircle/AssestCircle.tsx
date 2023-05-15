@@ -119,6 +119,7 @@ export default function AssestCircle({
     <div className="container">
       <div
         className="ball"
+        id="ball"
         style={{
           width: `${radiuss}px`,
           height: `${radiuss}px`,

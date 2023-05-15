@@ -264,3 +264,5 @@ export function sumOfTotalInvestment(res: Asset): number {
 
   return totalAmountInvested;
 }
+
+

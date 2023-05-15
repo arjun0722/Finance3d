@@ -33,7 +33,7 @@ import {
   UPDATE_ASSESTS,
   FIELD_ERROR,
 } from "../../helper/constant";
-import { useDispatch, useSelector } from "react-redux/es/exports";
+import { useDispatch, useSelector } from "react-redux";
 
 import "./AssestModal.css";
 

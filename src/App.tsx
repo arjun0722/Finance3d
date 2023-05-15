@@ -3,8 +3,7 @@ import "./App.css";
 import Chart from "./Component/Chart/Chart";
 import AssesModal from "./Component/AssestModal/AssesModal";
 import store from "./Redux/Store";
-import { Provider } from "react-redux/es/exports";
-import Form from "./Form";
+import { Provider } from "react-redux";
 
 function App() {
   return (
